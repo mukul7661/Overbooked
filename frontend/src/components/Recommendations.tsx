@@ -3,10 +3,12 @@ import { fetchRecommendationsApi } from "../services/api";
 import { Input } from "./ui/input";
 
 export function Recommendations() {
+  // State management for recommendations data and UI
   const [recommendations, setRecommendations] = useState<string[]>([]);
   const [userId, setUserId] = useState<string>("");
   const [error, setError] = useState<string>("");
 
+  // Load user ID from local storage on component mount
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
     if (storedUserId) {
@@ -14,6 +16,7 @@ export function Recommendations() {
     }
   }, []);
 
+  // Fetch recommendations whenever userId changes
   useEffect(() => {
     const fetchRecommendations = async () => {
       if (!userId) return;
@@ -39,6 +42,7 @@ export function Recommendations() {
       }}
     >
       <h1>Recommendations</h1>
+      {/* User ID display field */}
       <div className="input-group">
         <label>User ID:</label>
         <Input
@@ -49,9 +53,11 @@ export function Recommendations() {
         />
       </div>
 
+      {/* Recommendations display section */}
       <div className="interests-list">
         <label>Recommendations:</label>
         {recommendations && recommendations.length > 0 ? (
+          // Display list of recommendations if available
           recommendations.map((interest, index) => (
             <div
               key={index}
@@ -67,6 +73,7 @@ export function Recommendations() {
             </div>
           ))
         ) : (
+          // Display error or no recommendations message
           <p>{error || "No recommendations found"}</p>
         )}
       </div>

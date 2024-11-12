@@ -7,12 +7,14 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
+// Helper function to generate random user IDs
 const generateRandomUserId = () => {
   return "user_" + Math.random().toString(36).substring(2, 15);
 };
 
 export function CreateInterest() {
   const navigate = useNavigate();
+  // State management for form data and UI
   const [userId, setUserId] = useState("");
   const [interests, setInterests] = useState<string[]>([""]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,9 +22,9 @@ export function CreateInterest() {
     userId?: string;
     interests?: string[];
   }>({});
-
   const [error, setError] = useState<string>("");
 
+  // Initialize or retrieve user ID on component mount
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
     if (storedUserId) {
@@ -34,6 +36,7 @@ export function CreateInterest() {
     }
   }, []);
 
+  // Form field handlers
   const handleUserIdChange = (value: string) => {
     setUserId(value);
     localStorage.setItem("userId", value);
@@ -58,6 +61,7 @@ export function CreateInterest() {
     setErrors({});
   };
 
+  // Form validation
   const validateForm = () => {
     const newErrors: { userId?: string; interests?: string[] } = {};
     const interestErrors: string[] = [];
@@ -80,6 +84,7 @@ export function CreateInterest() {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Form submission handler
   const handleSubmit = async () => {
     if (!validateForm()) {
       toast.error("Please fill in all fields correctly.");
@@ -95,7 +100,7 @@ export function CreateInterest() {
       });
 
       console.log(response);
-
+      // Reset form and navigate on success
       setUserId("");
       setInterests([""]);
       setErrors({});
@@ -112,6 +117,7 @@ export function CreateInterest() {
     <div style={{ marginLeft: "250px" }}>
       <div>
         <h1>Create Interest</h1>
+        {/* User ID input field */}
         <div className="input-group">
           <label>User ID:</label>
           <Input
@@ -124,6 +130,7 @@ export function CreateInterest() {
           />
         </div>
 
+        {/* Dynamic interests input list */}
         <div className="interests-list">
           <label>Interests:</label>
           {interests.map((interest, index) => (
@@ -157,6 +164,8 @@ export function CreateInterest() {
             +
           </Button>
         </div>
+
+        {/* Submit button */}
         <Button
           variant="default"
           onClick={handleSubmit}

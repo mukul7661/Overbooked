@@ -4,9 +4,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { Button } from "./ui/button";
 
 function App() {
+  // Hook to get current route location
   const location = useLocation();
 
   return (
+    // Navigation sidebar
     <nav
       className=""
       style={{
@@ -24,6 +26,7 @@ function App() {
       <div>
         <div>
           <h3>OB Technical Test</h3>
+          {/* Navigation buttons container */}
           <div
             style={{
               display: "flex",
@@ -32,6 +35,7 @@ function App() {
               marginTop: "30px",
             }}
           >
+            {/* Create Interests navigation button */}
             <Link to="/create-interest">
               <Button
                 style={{
@@ -49,6 +53,7 @@ function App() {
                 Create Interests
               </Button>
             </Link>
+            {/* Recommendations navigation button */}
             <Link to="/recommendations">
               <Button
                 style={{
