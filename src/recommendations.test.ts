@@ -1,17 +1,26 @@
-import request from 'supertest';
-import app from './app';
+import request from "supertest";
+import app from "./server";
+import mongoose from "mongoose";
 
-describe('POST /recommendations', () => {
-  it('should generate and save recommendations', async () => {
+describe("POST /recommendations", () => {
+  afterEach(async () => {
+    await mongoose.connection.close();
+    await new Promise((resolve) => app.listen().close(resolve));
+  });
+  it("should generate and save recommendations", async () => {
     const response = await request(app)
-      .post('/recommendations')
+      .post("/recommendations")
       .send({
-        user_id: 'test_user',
-        preferences: ['science fiction', 'artificial intelligence', 'space exploration']
+        userId: "test_user",
+        preferences: [
+          "science fiction",
+          "artificial intelligence",
+          "space exploration",
+        ],
       });
 
     expect(response.status).toBe(200);
-    expect(response.body.user_id).toBe('test_user');
+    expect(response.body.userId).toBe("test_user");
     expect(Array.isArray(response.body.recommendations)).toBe(true);
   });
 });

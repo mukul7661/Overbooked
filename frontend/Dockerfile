@@ -1,5 +1,3 @@
-# Dockerfile
-
 FROM node
 
 WORKDIR /usr/src/app
@@ -10,6 +8,4 @@ RUN npm install
 
 COPY . .
 
-# RUN npm run build
-
-CMD ["nodemon", "src/app.ts"]
+CMD ["npm", "run", "dev",]

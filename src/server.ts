@@ -4,12 +4,9 @@ import recommendationsRouter from "./routes/recommendations";
 import usersRouter from "./routes/users";
 import { connectDB } from "./utils/database";
 import cors from "cors";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const app = express();
-const PORT = 8000;
+const PORT = 9000;
 
 app.use(
   cors({

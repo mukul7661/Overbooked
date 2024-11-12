@@ -1,0 +1,135 @@
+.create-interest {
+  min-height: 100%;
+  padding: 40px;
+  background-color: #f8f9fa;
+}
+
+.create-interest-card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.create-interest h1 {
+  color: #2c3e50;
+  margin-bottom: 32px;
+  font-size: 28px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+.input-group label,
+.interests-list label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 16px;
+}
+
+.input-group input {
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.interests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.interest-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  /* align-items: center; */
+}
+
+.interest-item input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.interest-item input:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.remove-btn,
+.add-btn {
+  width: 20px;
+  /* height: 20px; */
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.remove-btn {
+  background-color: #ff6b6b;
+}
+
+.remove-btn:hover {
+  background-color: #ff5252;
+  transform: scale(1.05);
+}
+
+.add-btn {
+  background-color: #51cf66;
+  align-self: flex-start;
+  /* margin-top: 8px; */
+}
+
+.add-btn:hover {
+  background-color: #40c057;
+  transform: scale(1.05);
+}
+
+input.error {
+  border-color: #e53e3e !important;
+  background-color: #fff5f5;
+}
+
+.error-message {
+  color: #e53e3e;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.interest-item {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.interest-item .input-wrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.interest-item .error-message {
+  margin-left: 48px;
+}

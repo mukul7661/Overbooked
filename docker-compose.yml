@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   app:
@@ -10,7 +10,18 @@ services:
       - "8000:8000"
     depends_on:
       - wiremock
-      - db
+    networks:
+      - app-network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/usr/src/app
+    command: npm run dev
+    networks:
+      - app-network
 
   wiremock:
     image: wiremock/wiremock:2.35.0
@@ -19,6 +30,12 @@ services:
     volumes:
       - ./wiremock:/home/wiremock
     command: --verbose
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   mongo_data:

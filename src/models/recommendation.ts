@@ -11,25 +11,23 @@
 
 // Example (from a different application):
 
-/*
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Document, Schema } from "mongoose";
 
 // Define an interface for the document
-export interface ArticleDocument extends Document {
-  author: string;
-  content: string;
-  tags: string[];
+export interface RecommendationDocument extends Document {
+  userId: string;
+  recommendations: string[];
 }
 
 // Create the schema
-const ArticleSchema: Schema = new Schema({
-  author: { type: String, required: true },
-  content: { type: String, required: true },
-  tags: { type: [String], required: true },
+const RecommendationSchema: Schema = new Schema({
+  userId: { type: String, required: true },
+  recommendations: { type: [String], required: true },
 });
 
-// Export the model
-export const ArticleModel = mongoose.model<ArticleDocument>('Article', ArticleSchema);
-*/
+export const RecommendationModel = mongoose.model<RecommendationDocument>(
+  "Recommendation",
+  RecommendationSchema
+);
 
 // Apply this pattern to create your `Recommendation` model.
