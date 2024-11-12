@@ -23,7 +23,7 @@ export function Recommendations() {
         setRecommendations(data?.recommendations);
       } catch (error) {
         console.error("Error fetching recommendations:", error);
-        setError("Error fetching recommendations");
+        setError("No recommendations found");
       }
     };
 

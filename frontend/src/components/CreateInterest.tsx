@@ -5,12 +5,14 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const generateRandomUserId = () => {
   return "user_" + Math.random().toString(36).substring(2, 15);
 };
 
 export function CreateInterest() {
+  const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [interests, setInterests] = useState<string[]>([""]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -97,7 +99,7 @@ export function CreateInterest() {
       setUserId("");
       setInterests([""]);
       setErrors({});
-      alert("Interests submitted successfully!");
+      navigate(`/recommendations`);
     } catch (err) {
       setError("Failed to submit interests. Please try again.");
       setErrors({ userId: "Failed to submit interests. Please try again." });
