@@ -13,4 +13,8 @@ npm run dev
 
 # Frontend will be available on port 5173
 # Demo - https://www.loom.com/share/1316606a8f204d8db8a757de98564808
-  ```
+
+# To run tests
+npx jest src/users.test.ts
+npx jest src/recommendations.test.ts
+```
